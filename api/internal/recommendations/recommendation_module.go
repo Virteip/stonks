@@ -15,13 +15,8 @@ type Module struct {
 }
 
 func NewModule(db database.Database) *Module {
-	// The recommendations module depends on the stocks repository
 	stockRepo := stocksRepository.NewStockRepository(db)
-
-	// Create the recommendation service
 	recommendationService := services.NewRecommendationService(stockRepo)
-
-	// Create the recommendation handler
 	recommendationHandler := handlers.NewRecommendationHandler(recommendationService)
 
 	return &Module{

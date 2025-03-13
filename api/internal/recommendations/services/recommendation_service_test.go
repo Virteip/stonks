@@ -12,7 +12,6 @@ import (
 func TestGetRecommendations(t *testing.T) {
 	// Successful recommendations
 	t.Run("successful recommendations", func(t *testing.T) {
-		// Create mock stocks with various scenarios
 		stocks := []models.Stock{
 			{
 				Ticker:     "AAPL",
@@ -63,12 +62,12 @@ func TestGetRecommendations(t *testing.T) {
 			t.Errorf("Expected no error but got: %v", err)
 		}
 
-		// We should have at least one recommendation (likely AAPL and MSFT, but not GOOG as it was downgraded)
+		// At least one recommendation
 		if len(recommendations) < 1 {
 			t.Errorf("Expected at least 1 recommendation but got %d", len(recommendations))
 		}
 
-		// Verify the recommendations are sorted properly (highest score first)
+		// Verify the recommendations are sorted properly
 		if len(recommendations) > 1 {
 			for i := 0; i < len(recommendations)-1; i++ {
 				if recommendations[i].Score < recommendations[i+1].Score {
@@ -99,7 +98,6 @@ func TestGetRecommendations(t *testing.T) {
 
 	// No recommendations
 	t.Run("no recommendations", func(t *testing.T) {
-		// Create mock stocks with only negative scenarios
 		stocks := []models.Stock{
 			{
 				Ticker:     "BAD1",
@@ -163,7 +161,6 @@ func TestGetRecommendations(t *testing.T) {
 
 	// Test with multiple positive stock ratings
 	t.Run("multiple positive stocks", func(t *testing.T) {
-		// Create mock stocks with various positive scenarios
 		stocks := []models.Stock{
 			{
 				Ticker:     "AAPL",
@@ -247,12 +244,12 @@ func TestGetRecommendations(t *testing.T) {
 			t.Errorf("Expected no error but got: %v", err)
 		}
 
-		// Should return exactly 5 recommendations as per the service implementation
+		// Should return 5 recommendations
 		if len(recommendations) != 5 {
 			t.Errorf("Expected 5 recommendations but got %d", len(recommendations))
 		}
 
-		// Verify the recommendations are sorted properly (highest score first)
+		// Verify the recommendations are sorted properly
 		for i := 0; i < len(recommendations)-1; i++ {
 			if recommendations[i].Score < recommendations[i+1].Score {
 				t.Errorf("Recommendations not sorted correctly at position %d", i)
@@ -263,7 +260,6 @@ func TestGetRecommendations(t *testing.T) {
 
 func TestGetRatingScore(t *testing.T) {
 	t.Run("test rating score calculation", func(t *testing.T) {
-		// Test different rating values to make sure they map to the right categories
 		positiveRatings := []string{"Buy", "Strong-Buy", "Outperform", "Overweight"}
 		neutralRatings := []string{"Hold", "Neutral", "Equal Weight", "Market Perform"}
 		negativeRatings := []string{"Sell", "Reduce", "Underperform", "Underweight"}

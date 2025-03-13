@@ -26,7 +26,6 @@ func (r *StockRepository) SaveStocks(stocks []models.Stock) error {
 	// Process the entire batch in a single transaction
 	err := r.db.Transaction(func(tx database.Transaction) error {
 		for _, stock := range stocks {
-			// Try to find an existing record using index-optimized query
 			var count int64
 			query := tx.Model(&models.Stock{}).Where("ticker = ? AND time = ?", stock.Ticker, stock.Time)
 
@@ -36,12 +35,10 @@ func (r *StockRepository) SaveStocks(stocks []models.Stock) error {
 			}
 
 			if count == 0 {
-				// Record doesn't exist, create it
 				if err := tx.Create(&stock); err != nil {
 					return err
 				}
 			} else {
-				// Record exists, update only the necessary fields
 				updates := map[string]interface{}{
 					"company":     stock.Company,
 					"brokerage":   stock.Brokerage,
@@ -132,7 +129,7 @@ func (r *StockRepository) GetRecentStocks(limit int) ([]models.Stock, error) {
 	var stocks []models.Stock
 
 	// Select only the fields needed for recommendations
-	err := r.db.Select("id, ticker, company, brokerage, action, rating_from, rating_to, target_from, target_to, time").
+	err := r.db.Select("ticker, company, brokerage, action, rating_from, rating_to, target_from, target_to, time").
 		Order("time DESC").
 		Limit(limit).
 		Find(&stocks)

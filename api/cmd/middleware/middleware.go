@@ -1,5 +1,3 @@
-// Create a new file: cmd/middleware/auth.go
-
 package middleware
 
 import (

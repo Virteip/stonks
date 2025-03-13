@@ -1,5 +1,59 @@
-# Vue 3 + TypeScript + Vite
+# Stonks UI
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Frontend application for the Stonks project, built with Vue 3, TypeScript, Pinia, and Tailwind CSS.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Requirements
+
+- Node.js 18+
+- npm or yarn
+
+## Setup
+
+1. Install dependencies:
+```bash
+npm install
+# or
+yarn
+```
+
+2. Configure environment variables:
+Create a `.env` file with:
+```
+VITE_API_BASE_URL=http://localhost:8080/api/v1/stonks-api
+VITE_API_KEY=your_api_key_here
+```
+And export before startup with this command in your terminal
+```
+$ export $(cat .env.local | grep -v ^# | xargs)
+```
+
+## Running the Application
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+The application will be available at `http://localhost:3000`.
+
+## Building for Production
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+## Features
+
+- View stocks with pagination
+- Search stocks by ticker
+- View stock recommendations based on advanced analysis
+
+## Views
+
+- **Stocks View**: Browse and search for stocks
+- **Recommendations View**: Get recommended stocks for investment
+
+Sergio Pietri

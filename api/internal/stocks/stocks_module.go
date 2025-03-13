@@ -15,13 +15,8 @@ type Module struct {
 }
 
 func NewModule(db database.Database) *Module {
-	// Create repository
 	stockRepo := repository.NewStockRepository(db)
-
-	// Create services
 	stockService := services.NewStockService(stockRepo)
-
-	// Create handlers
 	stockHandler := handlers.NewStockHandler(stockService)
 
 	return &Module{

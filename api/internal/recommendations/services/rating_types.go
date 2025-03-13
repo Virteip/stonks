@@ -7,8 +7,7 @@ const (
 	RatingCategoryNegative = "Negative"
 )
 
-// ratingCategoryMap maps specific rating strings to their categories
-// Using a function to initialize to avoid 'var' declaration
+// getRatingCategoryMap maps specific rating strings to their categories
 func getRatingCategoryMap() map[string]string {
 	return map[string]string{
 		// Positive ratings
