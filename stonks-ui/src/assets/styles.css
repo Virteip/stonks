@@ -1,0 +1,24 @@
+@import "tailwindcss"; 
+
+
+@layer components {
+  .card {
+    @apply bg-white shadow-md rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl border border-gray-200;
+  }
+
+  .card-header {
+    @apply px-6 py-4 flex justify-between items-center cursor-pointer hover:bg-gray-50;
+  }
+
+  .input-primary {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500;
+  }
+}

@@ -1,0 +1,23 @@
+{
+    "service": {
+        "name": "stonks-api"
+    },
+    "database": {
+        "user": "database_user",
+        "password": "replace_with_your_password",
+        "host": "your-db-hostname.example.com",
+        "port": 26257,
+        "name": "stonks",
+        "options": "sslmode=verify-full"
+    },
+    "server": {
+        "host": "0.0.0.0",
+        "port": 8080,
+        "APIKey": "your_api_key_here"
+    },
+    "externalStocksAPI": {
+        "url": "https://api.example.com/stocks",
+        "authHeader": "Authorization",
+        "authToken": "Bearer your_auth_token_here"
+    }
+}

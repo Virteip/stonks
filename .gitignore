@@ -23,3 +23,8 @@ go.work.sum
 
 # env file
 .env
+
+# Ignore all files in configs directory
+configs/*
+# Except the sample config file
+!configs/local.config.json
